@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="UWaGameJam2"
+run/main_scene="uid://iwfgkvarjm0n"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
