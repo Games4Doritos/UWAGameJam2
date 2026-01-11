@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cacdstj2v51f6"]
+
+[ext_resource type="Script" uid="uid://ph7y61u22dy3" path="res://Scripts/mainMenu.gd" id="1_60k44"]
+
+[node name="mainMenu" type="Node2D"]
+script = ExtResource("1_60k44")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 440.0
+offset_top = 135.0
+offset_right = 708.0
+offset_bottom = 196.0
+theme_override_font_sizes/normal_font_size = 42
+text = "Game Name"
+
+[node name="startLabel" type="RichTextLabel" parent="."]
+process_mode = 3
+offset_left = 538.0
+offset_top = 281.0
+offset_right = 586.0
+offset_bottom = 304.0
+text = "Start
+"
+
+[connection signal="mouse_entered" from="startLabel" to="." method="_on_start_label_mouse_entered"]
+[connection signal="mouse_exited" from="startLabel" to="." method="_on_start_label_mouse_exited"]

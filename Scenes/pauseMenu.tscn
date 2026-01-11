@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://drljc12idjfwg"]
+
+[ext_resource type="Script" uid="uid://bnrdmyjt6udy6" path="res://Scripts/pauseMenu.gd" id="1_15pn7"]
+
+[node name="Node2D" type="Node2D" groups=["pauseMenu"]]
+process_mode = 3
+script = ExtResource("1_15pn7")
+
+[node name="continue" type="RichTextLabel" parent="."]
+offset_left = 512.0
+offset_top = 264.0
+offset_right = 642.0
+offset_bottom = 290.0
+text = "Return To Game"
+
+[node name="leave" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = 496.0
+offset_top = 328.0
+offset_right = 668.0
+offset_bottom = 354.0
+text = "Return To Main Menu"
+
+[connection signal="mouse_entered" from="continue" to="." method="_on_continue_mouse_entered"]
+[connection signal="mouse_exited" from="continue" to="." method="_on_continue_mouse_exited"]
+[connection signal="mouse_entered" from="leave" to="." method="_on_leave_mouse_entered"]
+[connection signal="mouse_exited" from="leave" to="." method="_on_leave_mouse_exited"]

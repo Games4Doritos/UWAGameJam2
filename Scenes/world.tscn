@@ -1,6 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://iwfgkvarjm0n"]
+[gd_scene load_steps=9 format=3 uid="uid://iwfgkvarjm0n"]
 
 [ext_resource type="Script" uid="uid://dj1wthwtr1vnm" path="res://Scripts/world.gd" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://b6id4j4r5q3w4" path="res://Scenes/player.tscn" id="2_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://drljc12idjfwg" path="res://Scenes/pauseMenu.tscn" id="3_8j60k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
+
+[sub_resource type="Sky" id="Sky_a02cp"]
+sky_material = SubResource("ProceduralSkyMaterial_a02cp")
+
+[sub_resource type="Environment" id="Environment_a02cp"]
+background_mode = 2
+background_energy_multiplier = 1.62
+sky = SubResource("Sky_a02cp")
+tonemap_mode = 2
+tonemap_exposure = 1.34
+tonemap_white = 2.38
+glow_enabled = true
+adjustment_brightness = 6.76
+
+[sub_resource type="BoxMesh" id="BoxMesh_a02cp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
+albedo_color = Color(1, 0.2, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_a02cp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a02cp")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(-8.603006, 0, 0, 0, -0.0498811, 0, 0, 0, -7.895674, 0.028707623, 0.046147585, 0)
+use_collision = true
+flip_faces = true
+mesh = SubResource("BoxMesh_a02cp")
+material = SubResource("StandardMaterial3D_5a7ea")
+
+[node name="player" parent="." instance=ExtResource("2_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9838457, 0)
+
+[node name="pauseMenu" parent="." instance=ExtResource("3_8j60k")]
+visible = false
