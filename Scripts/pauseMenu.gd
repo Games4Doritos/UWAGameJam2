@@ -36,7 +36,6 @@ func _on_leave_mouse_exited() -> void:
 	
 func _input(event: InputEvent) -> void:
 	
-	print(event is InputEventMouseButton and continueSelected)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and continueSelected and event.pressed:
 		leftmouseDead = true
 		self.visible = false
