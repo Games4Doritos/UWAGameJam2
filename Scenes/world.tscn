@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://iwfgkvarjm0n"]
 
 [ext_resource type="Script" uid="uid://dj1wthwtr1vnm" path="res://Scripts/world.gd" id="1_a02cp"]
-[ext_resource type="PackedScene" uid="uid://b6id4j4r5q3w4" path="res://Scenes/player.tscn" id="2_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://3ovbxrbr88h0" path="res://Scenes/Player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://drljc12idjfwg" path="res://Scenes/pauseMenu.tscn" id="3_8j60k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
@@ -37,15 +37,15 @@ flip_faces = true
 mesh = SubResource("BoxMesh_a02cp")
 material = SubResource("StandardMaterial3D_5a7ea")
 
+[node name="pauseMenu" parent="." instance=ExtResource("3_8j60k")]
+visible = false
+
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
-transform = Transform3D(-8.603006, 0, 0, 0, -0.0498811, 0, 0, 0, -7.895674, 0.028707623, 12.988905, 0)
+transform = Transform3D(-8.603006, 0, 0, 0, -0.0498811, 0, 0, 0, -7.895674, 0.028707623, 5.1450367, 0)
 use_collision = true
 flip_faces = true
 mesh = SubResource("BoxMesh_a02cp")
 material = SubResource("StandardMaterial3D_5a7ea")
 
-[node name="player" parent="." instance=ExtResource("2_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9838457, 0)
-
-[node name="pauseMenu" parent="." instance=ExtResource("3_8j60k")]
-visible = false
+[node name="Node3D" parent="." instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2996776, 0)

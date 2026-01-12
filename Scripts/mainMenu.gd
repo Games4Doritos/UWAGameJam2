@@ -1,6 +1,6 @@
-extends Node2D
+extends Control
 
-@onready var start = $startLabel
+@onready var start = $CenterContainer/HBoxContainer/startLabel
 
 var startSelected = false
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_start_label_mouse_entered() -> void:
 	startSelected = true
-	start.scale = Vector2(1.5,1.5)
+	start.scale = Vector2(1.2,1.2)
 
 func _on_start_label_mouse_exited() -> void:
 	startSelected = false

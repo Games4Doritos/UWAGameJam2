@@ -3,15 +3,17 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const TERMINAL_VELOCITY = 40
-@onready var camera = $Camera3D
+@onready var camera = $head/Camera3D
 var cameraX:float:
 	set(value):
 		cameraX = clamp(value, -PI/2, PI/2)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var pauseMenu
+var flip = 1 # 1 for normal -1 for flipped gravity
 
 func _ready():
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	pauseMenu = get_tree().get_first_node_in_group("pauseMenu")
 	
 func _physics_process(delta):
@@ -23,26 +25,19 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var spherNorm = Vector2(sin(camera.rotation.y), cos(camera.rotation.y))
-	var spherDir = Input.get_vector("A", "D", "S", "W")
+	#var spherNorm = Vector2(sin(camera.rotation.y), cos(camera.rotation.y)) * flip
+	var input_dir = Input.get_vector("left", "right", "up", "down")
+	var direction = (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if not pauseMenu.isPaused:
 		
-		if spherDir[1] == 1:
-			velocity.z = -spherNorm[1] *  SPEED
-			velocity.x = -spherNorm[0] * SPEED
-		if spherDir[1] == -1:
-			velocity.z = spherNorm[1] *  SPEED
-			velocity.x = spherNorm[0] * SPEED
-		if spherDir[0] == -1:
-			velocity.z = spherNorm[0] *  SPEED
-			velocity.x = -spherNorm[1] * SPEED
-		if spherDir[0] == 1:
-			velocity.z = -spherNorm[0] *  SPEED
-			velocity.x = spherNorm[1] * SPEED
-		if spherDir == Vector2(0,0):
-			velocity.z = 0
-			velocity.x = 0
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.y = direction.y * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+
 		if abs(velocity.y) >= TERMINAL_VELOCITY:
 			velocity.y = TERMINAL_VELOCITY * velocity.y / abs(velocity.y)
 	else:
@@ -52,12 +47,17 @@ func _physics_process(delta):
 	
 	
 func _input(event):
+	var sensitivity = 700
+	
 	if event is InputEventMouseMotion and not pauseMenu.isPaused:
-		camera.rotation.y -= event.relative.x/1000
-		cameraX -= event.relative.y/1000
+		camera.rotation.y -= event.relative.x/sensitivity
+		cameraX -= event.relative.y/sensitivity
 		camera.rotation.x = cameraX
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not pauseMenu.isPaused and event.pressed and not pauseMenu.leftmouseDead:
-		changeGrav()
+		flip *= -1
+		gravity = -gravity
+		print(gravity)
+		rotate_z(deg_to_rad(180))
 	if event.is_action_pressed("Esc") and not pauseMenu.isPaused and not pauseMenu.escDead:
 		pauseMenu.isPaused = true
 		pauseMenu.visible = true

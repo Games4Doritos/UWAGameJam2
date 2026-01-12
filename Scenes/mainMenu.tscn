@@ -2,25 +2,52 @@
 
 [ext_resource type="Script" uid="uid://ph7y61u22dy3" path="res://Scripts/mainMenu.gd" id="1_60k44"]
 
-[node name="mainMenu" type="Node2D"]
+[node name="mainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_60k44")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 440.0
-offset_top = 135.0
-offset_right = 708.0
-offset_bottom = 196.0
-theme_override_font_sizes/normal_font_size = 42
-text = "Game Name"
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="startLabel" type="RichTextLabel" parent="."]
+[node name="HBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 42
+text = "GRAVITY BENDER
+
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="startLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer"]
 process_mode = 3
-offset_left = 538.0
-offset_top = 281.0
-offset_right = 586.0
-offset_bottom = 304.0
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
 text = "Start
 "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+horizontal_alignment = 1
+justification_flags = 0
 
-[connection signal="mouse_entered" from="startLabel" to="." method="_on_start_label_mouse_entered"]
-[connection signal="mouse_exited" from="startLabel" to="." method="_on_start_label_mouse_exited"]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/startLabel" to="." method="_on_start_label_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer/HBoxContainer/startLabel" to="." method="_on_start_label_mouse_exited"]

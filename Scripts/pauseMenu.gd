@@ -1,7 +1,7 @@
-extends Node2D
+extends Control
 
-@onready var cont = $continue
-@onready var leave = $leave
+@onready var cont = $CenterContainer/VBoxContainer/continue
+@onready var leave = $CenterContainer/VBoxContainer/leave
 
 @export var isPaused = false
 @export var escDead = false
