@@ -37,6 +37,13 @@ flip_faces = true
 mesh = SubResource("BoxMesh_a02cp")
 material = SubResource("StandardMaterial3D_5a7ea")
 
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(-8.603006, 0, 0, 0, -0.0498811, 0, 0, 0, -7.895674, 0.028707623, 12.988905, 0)
+use_collision = true
+flip_faces = true
+mesh = SubResource("BoxMesh_a02cp")
+material = SubResource("StandardMaterial3D_5a7ea")
+
 [node name="player" parent="." instance=ExtResource("2_5a7ea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9838457, 0)
 

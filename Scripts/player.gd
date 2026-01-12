@@ -57,11 +57,17 @@ func _input(event):
 		cameraX -= event.relative.y/1000
 		camera.rotation.x = cameraX
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not pauseMenu.isPaused and event.pressed and not pauseMenu.leftmouseDead:
-		gravity = -gravity
-		print(gravity)
+		changeGrav()
 	if event.is_action_pressed("Esc") and not pauseMenu.isPaused and not pauseMenu.escDead:
 		pauseMenu.isPaused = true
 		pauseMenu.visible = true
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		
+		
+func changeGrav():
+	#camera.rotate_z(PI)
+	gravity = -gravity
+	if is_on_floor():
+		velocity.y = -gravity/abs(gravity)
+	
