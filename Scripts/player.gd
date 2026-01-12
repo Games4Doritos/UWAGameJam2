@@ -56,10 +56,10 @@ func _input(event):
 		camera.rotation.y -= event.relative.x/1000
 		cameraX -= event.relative.y/1000
 		camera.rotation.x = cameraX
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not pauseMenu.isPaused and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not pauseMenu.isPaused and event.pressed and not pauseMenu.leftmouseDead:
 		gravity = -gravity
 		print(gravity)
-	if event.is_action_pressed("Esc") and not pauseMenu.isPaused:
+	if event.is_action_pressed("Esc") and not pauseMenu.isPaused and not pauseMenu.escDead:
 		pauseMenu.isPaused = true
 		pauseMenu.visible = true
 		get_tree().paused = true
