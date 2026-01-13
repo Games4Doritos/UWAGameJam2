@@ -20,6 +20,9 @@ func flip_gravity():
 	flip *= -1
 	up_direction.y *= -1
 	
+	#Adjust camera
+	yaw.position.y += 0.7 * flip
+	
 	#flip view without affecting movement!
 	cam.rotate_x(deg_to_rad(180))
 	
@@ -34,6 +37,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		yaw.rotate_y(-event.relative.x * SENSITIVITY * flip)
 		pitch.rotate_x(-event.relative.y * SENSITIVITY)
+		pitch.rotation.x = clamp(pitch.rotation.x, -PI/2, PI/2)
+		
 
 
 func _physics_process(delta: float) -> void:
