@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyxhqcptr46vf"]
+
+[ext_resource type="Script" uid="uid://bmwl1vy270rki" path="res://Scripts/platform.gd" id="1_1rc8e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xdow6"]
+size = Vector3(10, 0.1, 200)
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+use_collision = true
+mesh = SubResource("BoxMesh_xdow6")
+script = ExtResource("1_1rc8e")
