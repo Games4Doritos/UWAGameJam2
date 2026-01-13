@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5sebf5ma32cn"]
+
+[ext_resource type="PackedScene" uid="uid://darwuw5cvtoq7" path="res://Models/Shotgun Sawed Off.glb" id="1_0ym6k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ym6k"]
+albedo_color = Color(0.46666667, 0.46666667, 0.46666667, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0ide"]
+albedo_color = Color(0.5529412, 0.34901962, 0.29411766, 1)
+metallic = 0.2
+metallic_specular = 0.2
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8claw"]
+albedo_color = Color(0.5529412, 0.34901962, 0.29411766, 1)
+metallic = 0.2
+metallic_specular = 0.2
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vijm"]
+albedo_color = Color(0.46666667, 0.46666667, 0.46666667, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voe37"]
+albedo_color = Color(0.46666667, 0.46666667, 0.46666667, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.4
+
+[sub_resource type="Animation" id="Animation_0ym6k"]
+resource_name = "shoot"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode/Shotgun_SawedOff:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.06826383, 0, 0), Vector3(-0.5, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootNode/Shotgun_SawedOff:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, -1.5707964, 1.5707964), Vector3(-1.2217305, -1.5707964, 1.5707964), Vector3(-1.5707964, -1.5707964, 1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_u0ide"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode/Shotgun_SawedOff:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootNode/Shotgun_SawedOff:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8claw"]
+_data = {
+&"RESET": SubResource("Animation_u0ide"),
+&"shoot": SubResource("Animation_0ym6k")
+}
+
+[node name="shotgun" instance=ExtResource("1_0ym6k")]
+transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, 0, 0, 0)
+
+[node name="Shotgun_SawedOff" parent="RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0)
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_0ym6k")
+surface_material_override/1 = SubResource("StandardMaterial3D_u0ide")
+surface_material_override/2 = SubResource("StandardMaterial3D_8claw")
+surface_material_override/3 = SubResource("StandardMaterial3D_0vijm")
+surface_material_override/4 = SubResource("StandardMaterial3D_voe37")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_8claw")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(0.99999976, 0, -1.7763568e-14, 0, 0.99999976, 0, 1.7763568e-14, 0, 0.99999976, 3.1856983, 0.37646636, 0.0004039607)
+target_position = Vector3(1, 0, 0)

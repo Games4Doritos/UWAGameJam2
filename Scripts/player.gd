@@ -7,6 +7,11 @@ const SENSITIVITY = 0.005
 @onready var cam = $Yaw/Pitch/Camera3D
 @onready var yaw = $Yaw
 @onready var pitch = $Yaw/Pitch
+@onready var gun_anim = $Yaw/Pitch/Camera3D/shotgun/AnimationPlayer
+@onready var raycast = $Yaw/Pitch/Camera3D/shotgun/RayCast3D
+
+var bullet = preload("res://Scenes/bullet.tscn")
+var bulletInstance
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var isPaused = false
@@ -31,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not pauseMenu.isPaused and event.pressed and not pauseMenu.leftmouseDead:
 		gravity = -gravity
 		
-		flip_gravity()
+		#flip_gravity()
 		
 
 	if event is InputEventMouseMotion:
@@ -64,5 +69,12 @@ func _physics_process(delta: float) -> void:
 		var movement_dir_3d = yaw.basis.x * input_dir.y - flip * yaw.basis.z * input_dir.x
 		
 		position += movement_dir_3d * SPEED * delta
+		
+		if Input.is_action_just_pressed("shoot") and !gun_anim.is_playing():
+			gun_anim.play("shoot")
+			bulletInstance = bullet.instantiate()
+			bulletInstance.position = raycast.global_position
+			bulletInstance.transform.basis = raycast.global_transform.basis
+			get_parent().add_child(bulletInstance)
 
 	move_and_slide()
