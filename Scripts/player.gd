@@ -22,6 +22,7 @@ func _ready():
 	pauseMenu = get_tree().get_first_node_in_group("pauseMenu")
 	
 func flip_gravity():
+	gravity = -gravity
 	flip *= -1
 	up_direction.y *= -1
 	
@@ -33,11 +34,7 @@ func flip_gravity():
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not pauseMenu.isPaused and event.pressed and not pauseMenu.leftmouseDead:
-		gravity = -gravity
-		
-		#flip_gravity()
-		
+	pass
 
 	if event is InputEventMouseMotion:
 		yaw.rotate_y(-event.relative.x * SENSITIVITY * flip)
