@@ -68,10 +68,12 @@ func _physics_process(delta: float) -> void:
 		position += movement_dir_3d * SPEED * delta
 		
 		if Input.is_action_just_pressed("shoot") and !gun_anim.is_playing():
-			gun_anim.play("shoot")
 			bulletInstance = bullet.instantiate()
 			bulletInstance.position = raycast.global_position
 			bulletInstance.transform.basis = raycast.global_transform.basis
 			get_parent().add_child(bulletInstance)
+			gun_anim.play("shoot")
+			pitch.rotation.x = clamp(pitch.rotation.x + PI/8, -PI/2, PI/2)
+			
 
 	move_and_slide()
