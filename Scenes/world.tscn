@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://iwfgkvarjm0n"]
+[gd_scene load_steps=11 format=3 uid="uid://iwfgkvarjm0n"]
 
 [ext_resource type="Script" uid="uid://dj1wthwtr1vnm" path="res://Scripts/world.gd" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://c32q2juqfnvxl" path="res://Scenes/Player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://drljc12idjfwg" path="res://Scenes/pauseMenu.tscn" id="3_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cyxhqcptr46vf" path="res://Scenes/platform.tscn" id="4_8j60k"]
+[ext_resource type="PackedScene" uid="uid://08c42j810hqm" path="res://Scenes/enemy.tscn" id="5_fo5ed"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
@@ -57,5 +58,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9611673, 0.61556387, 0.1300
 [node name="gravityTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+transform = Transform3D(-0.25738096, 0.027227357, 0, -10.768595, 0.42369187, 0, 0, 0, 62.34163, -9.358684, 0.043846164, -1.0424061)
+use_collision = true
+flip_faces = true
+mesh = SubResource("BoxMesh_a02cp")
+material = SubResource("StandardMaterial3D_5a7ea")
+
+[node name="Root Scene" parent="." instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.7699921, -5.4396124)
 
 [connection signal="timeout" from="gravityTimer" to="." method="_on_gravityTimer_timeout"]

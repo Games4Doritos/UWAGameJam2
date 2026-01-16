@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce34pydvq6he1"]
+[gd_scene load_steps=8 format=3 uid="uid://ce34pydvq6he1"]
 
 [ext_resource type="Script" uid="uid://bho2q4fvd0g1v" path="res://Scenes/bullet.gd" id="1_xjght"]
 
@@ -25,8 +25,11 @@ emission_energy_multiplier = 8.0
 material = SubResource("StandardMaterial3D_oduel")
 size = Vector3(0.04, 0.04, 0.04)
 
-[node name="Bullet" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xjght"]
+
+[node name="Bullet" type="Node3D" groups=["bullet"]]
 script = ExtResource("1_xjght")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.371139e-09, -1, 0, 0.1, -4.371139e-08, 0, 0, 0, 0.1, 0, 0, 0)
@@ -34,11 +37,11 @@ mesh = SubResource("BoxMesh_4mw4s")
 surface_material_override/0 = SubResource("StandardMaterial3D_4mw4s")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50485915, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44378537, 0, 0)
 target_position = Vector3(1, 0, 0)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6020231, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5322716, 0, 0)
 emitting = false
 one_shot = true
 explosiveness = 1.0
@@ -50,4 +53,11 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="Area3D" type="Area3D" parent="." groups=["bullet"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0990836, 0, 0, 0, 0.09572685, 0, 0, 0)
+shape = SubResource("BoxShape3D_xjght")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
