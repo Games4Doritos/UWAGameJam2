@@ -253,6 +253,6 @@ omni_attenuation = 0.417
 stream = ExtResource("6_pc6ia")
 volume_db = -2.0
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
