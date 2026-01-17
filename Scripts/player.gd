@@ -33,7 +33,7 @@ func flip_gravity():
 	yaw.position.y += 0.7 * flip
 	
 	#flip view without affecting movement!
-	cam.rotate_x(deg_to_rad(180))
+	cam.rotate_z(deg_to_rad(180))
 	
 func hit() -> void:
 	$AudioStreamPlayer3D.play()
@@ -43,7 +43,7 @@ func hit() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		yaw.rotate_y(-event.relative.x * SENSITIVITY * flip)
-		pitch.rotate_x(-event.relative.y * SENSITIVITY)
+		pitch.rotate_x(-event.relative.y * SENSITIVITY * flip)
 		pitch.rotation.x = clamp(pitch.rotation.x, -PI/2, PI/2)
 		
 		
@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir := Input.get_vector("backward", "forward", "left", "right")
 
-		var movement_dir_3d = yaw.basis.x * input_dir.y - flip * yaw.basis.z * input_dir.x * sprintSpeed
+		var movement_dir_3d = flip * yaw.basis.x * input_dir.y - yaw.basis.z * input_dir.x * sprintSpeed
 		
 		position += movement_dir_3d * SPEED * delta
 		
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 			gun_anim.play("shoot")
 			gun.get_node("AudioStreamPlayer3D").play()
 			
-			pitch.rotation.x = clamp(pitch.rotation.x + PI/16, -PI/2, PI/2)
+			pitch.rotation.x = clamp(pitch.rotation.x + PI/16 * flip, -PI/2, PI/2)
 
 	move_and_slide()
 	
