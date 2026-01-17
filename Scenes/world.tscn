@@ -92,7 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.52157, 0)
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 40.42602, 0)
 
 [node name="portal" parent="." instance=ExtResource("7_o06y3")]
-transform = Transform3D(2.5, 0, 0, 0, 3.228, 0, 0, 0, 2.5, 0, 10, -6.7981873)
+transform = Transform3D(2.5, 0, 0, 0, 3.228, 0, 0, 0, 2.5, 0, 10, -203.66626)
 
 [node name="Root Scene" parent="." instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.463058, 1.0036545, -7.860717)
