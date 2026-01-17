@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 			var body = collision.get_collider()
 			
 			# Apply force in the opposite direction of collision
-			body.apply_impulse(-collision.get_normal() * 1000000000, collision.get_position() - body.global_position)
+			body.apply_impulse(-collision.get_normal() * 100000000000, collision.get_position() - body.global_position)
 
 
 func _on_timer_timeout() -> void:
