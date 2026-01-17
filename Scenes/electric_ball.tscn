@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc8spy6dxtpy4"]
+
+[ext_resource type="Script" uid="uid://durrpj3kdq0wb" path="res://electric_ball.gd" id="1_l0aqu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g753j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_aj036"]
+
+[node name="ElectricBall" type="Area3D"]
+script = ExtResource("1_l0aqu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_g753j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_aj036")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

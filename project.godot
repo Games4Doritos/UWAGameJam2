@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 pauseMenu=""
 bullet=""
+player=""
 
 [input]
 

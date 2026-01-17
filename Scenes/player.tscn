@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gntrk"]
 
-[node name="Node3D" type="CharacterBody3D"]
+[node name="Node3D" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_rpqav")
 metadata/_edit_group_ = true
 
