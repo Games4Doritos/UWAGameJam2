@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl8phx268dihq"]
+[gd_scene load_steps=7 format=3 uid="uid://cl8phx268dihq"]
 
 [ext_resource type="Script" uid="uid://dudgtuopdexsv" path="res://Scripts/player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://dv4ke34goy3tr" path="res://Scenes/shotgun.tscn" id="2_kyqiw"]
 [ext_resource type="AudioStream" uid="uid://7qnjrwa413ik" path="res://sounds/simple-zaps-48138.mp3" id="3_gntrk"]
+[ext_resource type="Texture2D" uid="uid://pik53c5jxqof" path="res://Sprites/crosshair.png" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
 
@@ -39,5 +40,18 @@ stream = ExtResource("3_gntrk")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="crosshair" type="Sprite2D" parent="Control"]
+texture = ExtResource("4_vgqql")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

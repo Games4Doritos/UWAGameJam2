@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 			gun_anim.play("shoot")
 			gun.get_node("AudioStreamPlayer3D").play()
 			
-			pitch.rotation.x = clamp(pitch.rotation.x + PI/8, -PI/2, PI/2)
+			pitch.rotation.x = clamp(pitch.rotation.x + PI/16, -PI/2, PI/2)
 
 	move_and_slide()
 	
