@@ -1,26 +1,38 @@
-[gd_scene load_steps=12 format=3 uid="uid://iwfgkvarjm0n"]
+[gd_scene load_steps=13 format=3 uid="uid://iwfgkvarjm0n"]
 
 [ext_resource type="Script" uid="uid://dj1wthwtr1vnm" path="res://Scripts/world.gd" id="1_a02cp"]
-[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://o3ub2oantqqe" path="res://Scenes/player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://drljc12idjfwg" path="res://Scenes/pauseMenu.tscn" id="3_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cyxhqcptr46vf" path="res://Scenes/platform.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://08c42j810hqm" path="res://Scenes/enemy.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://bku0fcxthrbtm" path="res://Scenes/world_boundary.tscn" id="6_5ukr8"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ukr8"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+sky_curve = 0.003552451
+sky_energy_multiplier = 2.0
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_a02cp"]
-sky_material = SubResource("ProceduralSkyMaterial_a02cp")
+sky_material = SubResource("ProceduralSkyMaterial_5ukr8")
 
 [sub_resource type="Environment" id="Environment_a02cp"]
 background_mode = 2
-background_energy_multiplier = 1.62
+background_energy_multiplier = 3.0
 sky = SubResource("Sky_a02cp")
 tonemap_mode = 2
 tonemap_exposure = 1.34
 tonemap_white = 2.38
 glow_enabled = true
-adjustment_brightness = 6.76
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5ukr8"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 1000.0
+dof_blur_far_transition = 8192.0
+dof_blur_amount = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_a02cp"]
 
@@ -32,6 +44,7 @@ script = ExtResource("1_a02cp")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a02cp")
+camera_attributes = SubResource("CameraAttributesPractical_5ukr8")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(-8.603006, 0, 0, 0, -0.0498811, 0, 0, 0, -7.895674, 0.028707623, 0.046147585, 0)
