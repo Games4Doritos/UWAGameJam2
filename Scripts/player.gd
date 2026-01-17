@@ -17,6 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var isPaused = false
 var pauseMenu
 var flip = 1
+var sprintSpeed = 1
 
 func _ready():
 	pauseMenu = get_tree().get_first_node_in_group("pauseMenu")
@@ -34,12 +35,11 @@ func flip_gravity():
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	pass
-
 	if event is InputEventMouseMotion:
 		yaw.rotate_y(-event.relative.x * SENSITIVITY * flip)
 		pitch.rotate_x(-event.relative.y * SENSITIVITY)
 		pitch.rotation.x = clamp(pitch.rotation.x, -PI/2, PI/2)
+		
 		
 
 
@@ -50,6 +50,11 @@ func _physics_process(delta: float) -> void:
 		pauseMenu.visible = true
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+	if Input.is_action_pressed("run"):
+		sprintSpeed = 1.5
+	else:
+		sprintSpeed = 1
 	
 	if not pauseMenu.isPaused:
 		if not is_on_floor():
@@ -63,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir := Input.get_vector("backward", "forward", "left", "right")
 
-		var movement_dir_3d = yaw.basis.x * input_dir.y - flip * yaw.basis.z * input_dir.x
+		var movement_dir_3d = yaw.basis.x * input_dir.y - flip * yaw.basis.z * input_dir.x * sprintSpeed
 		
 		position += movement_dir_3d * SPEED * delta
 		
@@ -74,7 +79,6 @@ func _physics_process(delta: float) -> void:
 			get_parent().add_child(bulletInstance)
 			gun_anim.play("shoot")
 			pitch.rotation.x = clamp(pitch.rotation.x + PI/8, -PI/2, PI/2)
-			
 
 	move_and_slide()
 	

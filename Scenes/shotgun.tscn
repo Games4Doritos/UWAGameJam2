@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5sebf5ma32cn"]
+[gd_scene load_steps=10 format=3 uid="uid://dv4ke34goy3tr"]
 
 [ext_resource type="PackedScene" uid="uid://darwuw5cvtoq7" path="res://Models/Shotgun Sawed Off.glb" id="1_0ym6k"]
 
@@ -32,6 +32,33 @@ metallic = 1.0
 metallic_specular = 1.0
 roughness = 0.4
 
+[sub_resource type="Animation" id="Animation_u0ide"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode/Shotgun_SawedOff:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootNode/Shotgun_SawedOff:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_0ym6k"]
 resource_name = "shoot"
 length = 0.3
@@ -61,33 +88,6 @@ tracks/1/keys = {
 "values": [Vector3(-1.5707964, -1.5707964, 1.5707964), Vector3(-1.2217305, -1.5707964, 1.5707964), Vector3(-1.5707964, -1.5707964, 1.5707964)]
 }
 
-[sub_resource type="Animation" id="Animation_u0ide"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RootNode/Shotgun_SawedOff:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RootNode/Shotgun_SawedOff:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8claw"]
 _data = {
 &"RESET": SubResource("Animation_u0ide"),
@@ -113,4 +113,3 @@ libraries = {
 
 [node name="RayCast3D" type="RayCast3D" parent="." index="2"]
 transform = Transform3D(0.99999976, 0, -1.7763568e-14, 0, 0.99999976, 0, 1.7763568e-14, 0, 0.99999976, 3.1856983, 0.37646636, 0.0004039607)
-target_position = Vector3(1, 0, 0)
