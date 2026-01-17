@@ -6,5 +6,6 @@ func _on_body_entered(body: Node3D) -> void:
 		get_tree().current_scene.gameover = true
 		$Camera3D.make_current()
 		$Win.show()
+		body.get_node("Control/crosshair").hide()
 		
 		print("Victory")
