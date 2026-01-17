@@ -77,3 +77,12 @@ func _physics_process(delta: float) -> void:
 			
 
 	move_and_slide()
+	
+	#get all collisions after moving
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider() is RigidBody3D:
+			var body = collision.get_collider()
+			
+			# Apply force in the opposite direction of collision
+			body.apply_impulse(-collision.get_normal() * 1000000000, collision.get_position() - body.global_position)

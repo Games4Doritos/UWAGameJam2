@@ -69,4 +69,7 @@ material = SubResource("StandardMaterial3D_5a7ea")
 [node name="Root Scene" parent="." instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.7699921, -5.4396124)
 
+[node name="Root Scene2" parent="." instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.7699921, -3.4396124)
+
 [connection signal="timeout" from="gravityTimer" to="." method="_on_gravityTimer_timeout"]
