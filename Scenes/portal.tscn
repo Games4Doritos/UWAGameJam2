@@ -21,7 +21,7 @@ height = 0.1
 albedo_color = Color(1, 1, 0.3254902, 1)
 emission_enabled = true
 emission = Color(0.76845, 0.6213882, 0, 1)
-emission_energy_multiplier = 4.12
+emission_energy_multiplier = 4.5
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uwyjv"]
 lifetime_randomness = 0.7
@@ -59,6 +59,7 @@ mesh = SubResource("CylinderMesh_oi2tk")
 surface_material_override/0 = SubResource("StandardMaterial3D_dashy")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="inner"]
+amount = 15
 process_material = SubResource("ParticleProcessMaterial_uwyjv")
 draw_pass_1 = SubResource("PrismMesh_8lpw3")
 

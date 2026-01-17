@@ -4,7 +4,7 @@ extends Node3D
 var deadPlayer = preload("res://Scenes/PlayerRagdoll.tscn")
 var droppedGun = preload("res://Scenes/dropped_gun.tscn")
 
-var gameover = false
+@export var gameover = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

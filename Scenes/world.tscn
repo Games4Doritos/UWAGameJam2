@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://08c42j810hqm" path="res://Scenes/enemy.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://bku0fcxthrbtm" path="res://Scenes/world_boundary.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://o7drq7xbcxxg" path="res://Scenes/portal.tscn" id="7_o06y3"]
-[ext_resource type="PackedScene" path="res://Scenes/game_over.tscn" id="8_k7acu"]
+[ext_resource type="PackedScene" uid="uid://cc88tjur4l33c" path="res://Scenes/game_over.tscn" id="8_k7acu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ukr8"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -66,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.52157, 0)
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 40.42602, 0)
 
 [node name="portal" parent="." instance=ExtResource("7_o06y3")]
-transform = Transform3D(2.5, 0, 0, 0, 3.228, 0, 0, 0, 2.5, 0, 10, -203.66626)
+transform = Transform3D(2.5, 0, 0, 0, 3.228, 0, 0, 0, 2.5, 0, 10, -202.2111)
 
 [node name="Root Scene" parent="." instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.463058, 1.0036545, -7.860717)
