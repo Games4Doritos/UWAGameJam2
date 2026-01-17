@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://o7drq7xbcxxg"]
+[gd_scene load_steps=11 format=3 uid="uid://o7drq7xbcxxg"]
 
 [ext_resource type="Script" uid="uid://birj0paycsxr" path="res://Scripts/portal.gd" id="1_j20fm"]
+[ext_resource type="PackedScene" uid="uid://c3wwsqb2hcwwt" path="res://Scripts/win.tscn" id="2_oi2tk"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_vff14"]
 inner_radius = 2.5
@@ -64,5 +65,11 @@ draw_pass_1 = SubResource("PrismMesh_8lpw3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_oi2tk")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.39999998, 0, 0, 0, 0.30978933, 0, 0, 0, 0.39999998, 0, 0, 7.163843)
+
+[node name="Win" parent="." instance=ExtResource("2_oi2tk")]
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
