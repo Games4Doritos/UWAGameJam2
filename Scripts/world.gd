@@ -18,6 +18,7 @@ func gameOver() -> void:
 		ragdoll.position = player.position
 		gun.position = player.position
 		player.hide()
+		player.get_node("Control/crosshair").hide()
 		
 		get_tree().current_scene.add_child(ragdoll)
 		get_tree().current_scene.add_child(gun)
