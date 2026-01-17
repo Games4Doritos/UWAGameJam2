@@ -30,7 +30,6 @@ func gameOver() -> void:
 			enemy.get_node("Timer").stop()
 		$Ui.hide()
 		$leaveTimer.start()
-		print("GAME OVER")
 
 func _on_gravity_timer_timeout() -> void:
 	player.flip_gravity()

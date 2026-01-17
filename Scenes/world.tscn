@@ -77,7 +77,7 @@ visible = false
 autostart = true
 
 [node name="leaveTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 5.0
 
 [connection signal="timeout" from="gravityTimer" to="." method="_on_gravity_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
