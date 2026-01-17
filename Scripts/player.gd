@@ -34,6 +34,10 @@ func flip_gravity():
 	#flip view without affecting movement!
 	cam.rotate_x(deg_to_rad(180))
 	
+func hit() -> void:
+	$AudioStreamPlayer3D.play()
+	$Timer.start()
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -93,3 +97,7 @@ func _physics_process(delta: float) -> void:
 			
 			# Apply force in the opposite direction of collision
 			body.apply_impulse(-collision.get_normal() * 1000000000, collision.get_position() - body.global_position)
+
+
+func _on_timer_timeout() -> void:
+	$AudioStreamPlayer3D.stop()

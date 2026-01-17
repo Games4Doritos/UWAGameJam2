@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl8phx268dihq"]
+[gd_scene load_steps=6 format=3 uid="uid://cl8phx268dihq"]
 
 [ext_resource type="Script" uid="uid://dudgtuopdexsv" path="res://Scripts/player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://dv4ke34goy3tr" path="res://Scenes/shotgun.tscn" id="2_kyqiw"]
+[ext_resource type="AudioStream" uid="uid://7qnjrwa413ik" path="res://sounds/simple-zaps-48138.mp3" id="3_gntrk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
 
@@ -32,3 +33,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70562553, 0.325087)
 
 [node name="shotgun" parent="Yaw/Pitch/Camera3D" instance=ExtResource("2_kyqiw")]
 transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, 0.32701033, -0.22464943, -0.12705874)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_gntrk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
