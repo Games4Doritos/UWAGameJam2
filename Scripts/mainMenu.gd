@@ -16,6 +16,9 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and startSelected:
+		$CenterContainer/HBoxContainer.hide()
+		$CenterContainer/HBoxContainer2.show()
+		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and quitSelected:
 		get_tree().quit()

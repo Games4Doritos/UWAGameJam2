@@ -56,6 +56,21 @@ text = "Quit
 fit_content = true
 horizontal_alignment = 1
 
+[node name="HBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 42
+text = "Loading...
+
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
 [connection signal="mouse_entered" from="CenterContainer/HBoxContainer/startLabel" to="." method="_on_start_label_mouse_entered"]
 [connection signal="mouse_exited" from="CenterContainer/HBoxContainer/startLabel" to="." method="_on_start_label_mouse_exited"]
 [connection signal="mouse_entered" from="CenterContainer/HBoxContainer/quitLabel" to="." method="_on_quit_label_mouse_entered"]
