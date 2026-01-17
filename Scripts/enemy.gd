@@ -16,6 +16,9 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("bullet") and !is_ragdoll:
+		var newMaterial = $RootNode/Skeleton3D/Cube_001.get_surface_override_material(0).duplicate()
+		newMaterial.emission = Color(0,0,0,1)
+		$RootNode/Skeleton3D/Cube_001.set_surface_override_material(0, newMaterial)
 		is_ragdoll = true
 		$RootNode/Skeleton3D/PhysicalBoneSimulator3D.physical_bones_start_simulation()
 		$"RootNode/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_Spine".linear_velocity = (position - area.position).normalized() * 100
