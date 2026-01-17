@@ -201,7 +201,7 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_qkj5a"]
 material = SubResource("StandardMaterial3D_g5k54")
 
-[node name="ElectricBall" type="Area3D"]
+[node name="ElectricBall" type="Area3D" groups=["enemyProjectile"]]
 script = ExtResource("1_l0aqu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 pauseMenu=""
 bullet=""
 player=""
+enemy=""
+enemyProjectile=""
 
 [input]
 

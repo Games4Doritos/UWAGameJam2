@@ -24,7 +24,8 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	mesh.visible = false
-	particles.emitting = true
-	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	if area.is_in_group("enemyProjectile"):
+		mesh.visible = false
+		particles.emitting = true
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
