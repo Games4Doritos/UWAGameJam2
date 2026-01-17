@@ -29,6 +29,7 @@ func gameOver() -> void:
 		for enemy in get_tree().get_nodes_in_group("enemy"):
 			enemy.get_node("Timer").stop()
 		$Ui.hide()
+		$leaveTimer.start()
 		print("GAME OVER")
 
 func _on_gravity_timer_timeout() -> void:
@@ -44,3 +45,8 @@ func _on_timer_2_timeout() -> void:
 	$Ui.get_node("CenterContainer/Label").text = str(time)
 	if time == 0:
 		gameOver()
+
+
+func _on_leave_timer_timeout() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file("res://Scenes/mainMenu.tscn")
