@@ -28,7 +28,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if (position-player.position).length() < 30:
+	if (global_position-player.global_position).length() < 50:
 		var ballInstance = ball.instantiate()
 		ballInstance.position = $RootNode/Skeleton3D/mixamorig_Head.global_position
 		
