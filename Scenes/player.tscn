@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c32q2juqfnvxl"]
 
 [ext_resource type="Script" uid="uid://dudgtuopdexsv" path="res://Scripts/player.gd" id="1_rpqav"]
-[ext_resource type="PackedScene" uid="uid://darwuw5cvtoq7" path="res://Models/Shotgun Sawed Off.glb" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://dv4ke34goy3tr" path="res://Scenes/shotgun.tscn" id="2_kyqiw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
 
@@ -30,5 +30,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.706, 0)
 [node name="AxisIndicator" type="Node3D" parent="Yaw/Pitch/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70562553, 0.325087)
 
-[node name="Shoty" parent="Yaw/Pitch/Camera3D" instance=ExtResource("2_kyqiw")]
-transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, 0.29472744, -0.23932004, -0.17904043)
+[node name="shotgun" parent="Yaw/Pitch/Camera3D" instance=ExtResource("2_kyqiw")]
+transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, 0.32701033, -0.22464943, -0.12705874)
