@@ -27,5 +27,6 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("enemyProjectile"):
 		mesh.visible = false
 		particles.emitting = true
+		get_tree().current_scene.time += 1
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

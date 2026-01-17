@@ -5,6 +5,7 @@ var deadPlayer = preload("res://Scenes/PlayerRagdoll.tscn")
 var droppedGun = preload("res://Scenes/dropped_gun.tscn")
 
 var gameover = false
+var time = 30
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -37,3 +38,9 @@ func _on_gravity_timer_timeout() -> void:
 		for bone in enemy.get_node("RootNode/Skeleton3D/PhysicalBoneSimulator3D").get_children():
 			if bone is PhysicalBone3D:
 				bone.gravity_scale = -bone.gravity_scale
+
+func _on_timer_2_timeout() -> void:
+	time -= 1
+	$Ui.get_node("CenterContainer/Label").text = str(time)
+	if time == 0:
+		gameOver()

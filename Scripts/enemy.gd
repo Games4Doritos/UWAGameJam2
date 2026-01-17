@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("bullet") and !is_ragdoll:
+		get_tree().current_scene.time += 1
 		var newMaterial = $RootNode/Skeleton3D/Cube_001.get_surface_override_material(0).duplicate()
 		newMaterial.emission = Color(0,0,0,1)
 		$RootNode/Skeleton3D/Cube_001.set_surface_override_material(0, newMaterial)
@@ -28,7 +29,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if (global_position-player.global_position).length() < 50:
+	if (global_position-player.global_position).length() < 40:
 		var ballInstance = ball.instantiate()
 		ballInstance.position = $RootNode/Skeleton3D/mixamorig_Head.global_position
 		
