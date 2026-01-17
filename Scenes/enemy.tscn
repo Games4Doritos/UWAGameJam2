@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://08c42j810hqm"]
 
 [ext_resource type="PackedScene" uid="uid://btsu5cw0gbxlu" path="res://Models/Animated Character Base.glb" id="1_hghv2"]
-[ext_resource type="Script" uid="uid://lbnyr22nabrt" path="res://Scenes/enemy.gd" id="2_1f0kj"]
+[ext_resource type="Script" uid="uid://lbnyr22nabrt" path="res://Scripts/enemy.gd" id="2_1f0kj"]
 [ext_resource type="AudioStream" uid="uid://8d2ymk7rycjx" path="res://sounds/energy-hum-29083.mp3" id="3_afpow"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f0kj"]
