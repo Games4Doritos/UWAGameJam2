@@ -107,10 +107,20 @@ fit_content = true
 horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
-visible = false
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer2"]
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -334.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 42
 text = "Loading...

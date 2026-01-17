@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://iwfgkvarjm0n"]
+[gd_scene load_steps=15 format=3 uid="uid://iwfgkvarjm0n"]
 
 [ext_resource type="Script" uid="uid://dj1wthwtr1vnm" path="res://Scripts/world.gd" id="1_a02cp"]
-[ext_resource type="PackedScene" uid="uid://o3ub2oantqqe" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://o3ub2oantqqe" path="res://Scenes/Player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://drljc12idjfwg" path="res://Scenes/pauseMenu.tscn" id="3_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cyxhqcptr46vf" path="res://Scenes/platform.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://bku0fcxthrbtm" path="res://Scenes/world_boundary.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://o7drq7xbcxxg" path="res://Scenes/portal.tscn" id="7_o06y3"]
 [ext_resource type="PackedScene" uid="uid://cc88tjur4l33c" path="res://Scenes/game_over.tscn" id="8_k7acu"]
-[ext_resource type="PackedScene" path="res://Scenes/UI.tscn" id="9_5v1tr"]
+[ext_resource type="AudioStream" uid="uid://dv4oikwhse107" path="res://sounds/gravdown_pass1.ogg" id="9_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://daf0uiabkcwkd" path="res://Scenes/UI.tscn" id="9_5v1tr"]
+[ext_resource type="PackedScene" uid="uid://cm2gwkw6c2cgj" path="res://Scenes/loading.tscn" id="10_0fj1v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ukr8"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -38,6 +40,8 @@ dof_blur_amount = 0.0
 
 [node name="Node3D3" type="Node3D"]
 script = ExtResource("1_a02cp")
+
+[node name="Loading" parent="." instance=ExtResource("10_0fj1v")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a02cp")
@@ -78,6 +82,10 @@ autostart = true
 
 [node name="leaveTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0fj1v")
+parameters/looping = true
 
 [connection signal="timeout" from="gravityTimer" to="." method="_on_gravity_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

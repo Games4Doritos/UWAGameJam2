@@ -5,11 +5,17 @@ var deadPlayer = preload("res://Scenes/PlayerRagdoll.tscn")
 var droppedGun = preload("res://Scenes/dropped_gun.tscn")
 
 var time = 30
+var done_loading = false
 @export var gameover = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
+
+func _process(delta: float) -> void:
+	if done_loading and !$AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
+		$Loading.hide()
 
 func gameOver() -> void:
 	if !gameover:

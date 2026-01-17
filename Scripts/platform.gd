@@ -41,6 +41,7 @@ func _ready():
 		for x in int(self.mesh.size.x/3): 
 			createHole(3*i, noiseCreator.get_noise_2d(3*x,3*i))
 				
+	get_tree().current_scene.done_loading = true
 	
 	
 	
