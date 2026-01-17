@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c56ifhhbd0j6c"]
+
+[ext_resource type="PackedScene" uid="uid://darwuw5cvtoq7" path="res://Models/Shotgun Sawed Off.glb" id="1_ve5if"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2b3w"]
+height = 4.0625
+
+[node name="droppedGun" type="RigidBody3D"]
+
+[node name="Root Scene" parent="." instance=ExtResource("1_ve5if")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.4874305e-05, 1.0000001, 0, -1.0000001, 3.4874305e-05, 0, 0, 0, 1, 1.4844348, 0.05301456, 0)
+shape = SubResource("CapsuleShape3D_e2b3w")

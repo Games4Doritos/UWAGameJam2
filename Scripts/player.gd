@@ -21,6 +21,8 @@ var pauseMenu
 var flip = 1
 var sprintSpeed = 1
 
+var dead = false
+
 func _ready():
 	pauseMenu = get_tree().get_first_node_in_group("pauseMenu")
 	
@@ -64,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprintSpeed = 1
 	
-	if not pauseMenu.isPaused:
+	if not pauseMenu.isPaused and not dead:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://iwfgkvarjm0n"]
+[gd_scene load_steps=15 format=3 uid="uid://iwfgkvarjm0n"]
 
 [ext_resource type="Script" uid="uid://dj1wthwtr1vnm" path="res://Scripts/world.gd" id="1_a02cp"]
-[ext_resource type="PackedScene" uid="uid://o3ub2oantqqe" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://o3ub2oantqqe" path="res://Scenes/Player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://drljc12idjfwg" path="res://Scenes/pauseMenu.tscn" id="3_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cyxhqcptr46vf" path="res://Scenes/platform.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://08c42j810hqm" path="res://Scenes/enemy.tscn" id="5_fo5ed"]
-[ext_resource type="PackedScene" path="res://Scenes/world_boundary.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://bku0fcxthrbtm" path="res://Scenes/world_boundary.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://o7drq7xbcxxg" path="res://Scenes/portal.tscn" id="7_o06y3"]
+[ext_resource type="PackedScene" uid="uid://cc88tjur4l33c" path="res://Scenes/game_over.tscn" id="8_k7acu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ukr8"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -81,12 +82,6 @@ flip_faces = true
 mesh = SubResource("BoxMesh_a02cp")
 material = SubResource("StandardMaterial3D_5a7ea")
 
-[node name="Root Scene" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 5, 0.7699921, -32.439613)
-
-[node name="Root Scene2" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.7699921, -3.4396124)
-
 [node name="top" parent="." instance=ExtResource("4_8j60k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -100)
 
@@ -98,5 +93,11 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 4
 
 [node name="portal" parent="." instance=ExtResource("7_o06y3")]
 transform = Transform3D(2.5, 0, 0, 0, 3.228, 0, 0, 0, 2.5, 0, 10, -204.3259)
+
+[node name="Root Scene" parent="." instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.463058, 1.0036545, -7.860717)
+
+[node name="GameOver" parent="." instance=ExtResource("8_k7acu")]
+visible = false
 
 [connection signal="timeout" from="gravityTimer" to="." method="_on_gravity_timer_timeout"]
