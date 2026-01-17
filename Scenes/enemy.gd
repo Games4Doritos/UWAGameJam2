@@ -3,11 +3,11 @@ extends Node3D
 @onready var timer = $Timer
 
 var ball = preload("res://Scenes/electric_ball.tscn")
+var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
+	player = get_tree().get_nodes_in_group("player")[0]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,7 +21,8 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	var ballInstance = ball.instantiate()
-	ballInstance.position = global_position
-	
-	get_tree().current_scene.add_child(ballInstance)
+	if (position-player.position).length() < 30:
+		var ballInstance = ball.instantiate()
+		ballInstance.position = global_position
+		
+		get_tree().current_scene.add_child(ballInstance)

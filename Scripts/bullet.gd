@@ -10,7 +10,6 @@ const SPEED = 200.0
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position += transform.basis * Vector3(SPEED, 0, 0) * delta
@@ -21,10 +20,8 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
-
 func _on_timer_timeout() -> void:
 	queue_free()
-
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	mesh.visible = false
