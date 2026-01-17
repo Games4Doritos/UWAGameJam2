@@ -1,4 +1,43 @@
-[gd_scene load_steps=0 format=3 uid="uid://c3wwsqb2hcwwt"]
+[gd_scene load_steps=5 format=3 uid="uid://c3wwsqb2hcwwt"]
+
+[ext_resource type="Script" uid="uid://boa30qxphtyhc" path="res://Scripts/win.gd" id="1_h7v5o"]
+
+[sub_resource type="Animation" id="Animation_h7v5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sdawj"]
+resource_name = "fadeWhite"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sb4ed"]
+_data = {
+&"RESET": SubResource("Animation_h7v5o"),
+&"fadeWhite": SubResource("Animation_sdawj")
+}
 
 [node name="Win" type="Control"]
 layout_mode = 3
@@ -7,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_h7v5o")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -25,3 +65,15 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 1
 text = "YOU ESCAPED"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sb4ed")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
