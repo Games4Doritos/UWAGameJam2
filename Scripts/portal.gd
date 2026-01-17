@@ -9,3 +9,4 @@ func _on_body_entered(body: Node3D) -> void:
 		$Win.show()
 		body.get_node("Control/crosshair").hide()
 		$Win/AnimationPlayer.play("fadeWhite")
+		get_tree().current_scene.get_node("Ui").hide()

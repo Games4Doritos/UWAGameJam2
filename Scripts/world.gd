@@ -28,7 +28,7 @@ func gameOver() -> void:
 		
 		for enemy in get_tree().get_nodes_in_group("enemy"):
 			enemy.get_node("Timer").stop()
-		
+		$Ui.hide()
 		print("GAME OVER")
 
 func _on_gravity_timer_timeout() -> void:

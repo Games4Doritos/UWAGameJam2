@@ -33,7 +33,7 @@ func flip_gravity():
 	up_direction.y *= -1
 	
 	#Adjust camera
-	yaw.position.y += 0.7 * flip
+	yaw.position.y += 1 * flip
 	
 	#flip view without affecting movement!
 	cam.rotate_z(deg_to_rad(180))
