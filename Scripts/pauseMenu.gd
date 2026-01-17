@@ -43,6 +43,7 @@ func _input(event: InputEvent) -> void:
 		isPaused = false
 		get_tree().paused = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		$"../player".crosshair.visible = true
 		
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and leaveSelected and event.pressed:
 		get_tree().paused = false
@@ -57,6 +58,7 @@ func _input(event: InputEvent) -> void:
 		leave.scale = Vector2(1,1)
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		get_tree().paused = false
+		$"../player".crosshair.visible = true
 	
 	if event.is_action_released("Esc") and escDead:
 		escDead = false
