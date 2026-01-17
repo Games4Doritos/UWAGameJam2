@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://iwfgkvarjm0n"]
+[gd_scene load_steps=13 format=3 uid="uid://iwfgkvarjm0n"]
 
 [ext_resource type="Script" uid="uid://dj1wthwtr1vnm" path="res://Scripts/world.gd" id="1_a02cp"]
-[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://o3ub2oantqqe" path="res://Scenes/player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://drljc12idjfwg" path="res://Scenes/pauseMenu.tscn" id="3_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cyxhqcptr46vf" path="res://Scenes/platform.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://08c42j810hqm" path="res://Scenes/enemy.tscn" id="5_fo5ed"]
-[ext_resource type="PackedScene" uid="uid://bku0fcxthrbtm" path="res://Scenes/world_boundary.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" path="res://Scenes/world_boundary.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://o7drq7xbcxxg" path="res://Scenes/portal.tscn" id="7_o06y3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
@@ -81,5 +82,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.52157, 0)
 
 [node name="WorldBoundary2" parent="." instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 40.42602, 0)
+
+[node name="portal" parent="." instance=ExtResource("7_o06y3")]
+transform = Transform3D(2.5, 0, 0, 0, 3.228, 0, 0, 0, 2.5, 0, 10, -204.3259)
 
 [connection signal="timeout" from="gravityTimer" to="." method="_on_gravity_timer_timeout"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://o7drq7xbcxxg"]
+
+[ext_resource type="Script" uid="uid://birj0paycsxr" path="res://Scripts/portal.gd" id="1_j20fm"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_vff14"]
+inner_radius = 2.5
+outer_radius = 2.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j20fm"]
+emission_enabled = true
+emission = Color(0.8431839, 0.8431839, 0.84318376, 1)
+emission_energy_multiplier = 1.92
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oi2tk"]
+top_radius = 2.5
+bottom_radius = 2.5
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dashy"]
+albedo_color = Color(1, 1, 0.3254902, 1)
+emission_enabled = true
+emission = Color(0.76845, 0.6213882, 0, 1)
+emission_energy_multiplier = 4.12
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uwyjv"]
+lifetime_randomness = 0.7
+direction = Vector3(0, -1, 0)
+spread = 70.0
+initial_velocity_max = 13.049999
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 160.93999
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqy4h"]
+albedo_color = Color(1, 1, 0.68235296, 1)
+emission_enabled = true
+emission = Color(0.78431374, 0.78431374, 0.44313726, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_8lpw3"]
+material = SubResource("StandardMaterial3D_cqy4h")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oi2tk"]
+height = 0.6
+radius = 2.7
+
+[node name="Node3D2" type="Area3D"]
+transform = Transform3D(2.5, 0, 0, 0, 3.228, 0, 0, 0, 2.5, 0, 0, 0)
+script = ExtResource("1_j20fm")
+
+[node name="outer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_vff14")
+surface_material_override/0 = SubResource("StandardMaterial3D_j20fm")
+
+[node name="inner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_oi2tk")
+surface_material_override/0 = SubResource("StandardMaterial3D_dashy")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="inner"]
+process_material = SubResource("ParticleProcessMaterial_uwyjv")
+draw_pass_1 = SubResource("PrismMesh_8lpw3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_oi2tk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

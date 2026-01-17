@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyxhqcptr46vf"]
+[gd_scene load_steps=4 format=3 uid="uid://cyxhqcptr46vf"]
 
 [ext_resource type="Script" uid="uid://bmwl1vy270rki" path="res://Scripts/platform.gd" id="1_1rc8e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xdow6"]
 size = Vector3(10, 0.1, 200)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rc8e"]
+albedo_color = Color(0.36977664, 0.41044497, 0.4837258, 1)
+metallic = 0.86
+emission_enabled = true
+emission = Color(0.4506483, 0.4506483, 0.45064825, 1)
+emission_energy_multiplier = 0.1
+
 [node name="CSGMesh3D" type="CSGMesh3D"]
 use_collision = true
 mesh = SubResource("BoxMesh_xdow6")
+material = SubResource("StandardMaterial3D_1rc8e")
 script = ExtResource("1_1rc8e")

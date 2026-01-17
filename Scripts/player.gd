@@ -10,6 +10,7 @@ const SENSITIVITY = 0.005
 @onready var gun_anim = $Yaw/Pitch/Camera3D/shotgun/AnimationPlayer
 @onready var raycast = $Yaw/Pitch/Camera3D/shotgun/RayCast3D
 @onready var gun = $Yaw/Pitch/Camera3D/shotgun
+@onready var crosshair = $Control/crosshair
 
 var bullet = preload("res://Scenes/bullet.tscn")
 var bulletInstance
@@ -51,10 +52,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if Input.is_action_just_pressed("Esc") and not pauseMenu.isPaused and not pauseMenu.escDead:
+		crosshair.visible = false
 		pauseMenu.isPaused = true
 		pauseMenu.visible = true
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
 		
 	if Input.is_action_pressed("run"):
 		sprintSpeed = 1.5
@@ -77,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		
 		position += movement_dir_3d * SPEED * delta
 		
-		if Input.is_action_just_pressed("shoot") and !gun_anim.is_playing():
+		if Input.is_action_just_pressed("shoot") and !gun_anim.is_playing() and not pauseMenu.leftmouseDead :
 			bulletInstance = bullet.instantiate()
 			bulletInstance.position = raycast.global_position
 			bulletInstance.transform.basis = raycast.global_transform.basis
