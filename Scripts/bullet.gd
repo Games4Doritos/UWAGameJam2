@@ -4,7 +4,7 @@ extends Node3D
 @onready var raycast = $RayCast3D
 @onready var particles = $GPUParticles3D
 
-const SPEED = 40.0
+const SPEED = 200.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
