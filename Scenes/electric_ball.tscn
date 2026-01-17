@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://bc8spy6dxtpy4"]
+[gd_scene load_steps=44 format=3 uid="uid://bc8spy6dxtpy4"]
 
 [ext_resource type="Script" uid="uid://durrpj3kdq0wb" path="res://electric_ball.gd" id="1_l0aqu"]
 [ext_resource type="Texture2D" uid="uid://b44ojak7pi0qk" path="res://textures/circle_01.png" id="2_ryokf"]
 [ext_resource type="Texture2D" uid="uid://o7smp78lwvtr" path="res://textures/spark_02.png" id="3_tqevk"]
 [ext_resource type="Texture2D" uid="uid://byvc0eddfex4p" path="res://textures/magic_05.png" id="4_tqevk"]
 [ext_resource type="Texture2D" uid="uid://d0fvlqqiykf8n" path="res://textures/spark_04.png" id="5_qrt7k"]
+[ext_resource type="AudioStream" uid="uid://bp7qwfegdocep" path="res://sounds/electric-sparks-6130.mp3" id="6_pc6ia"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g753j"]
 
@@ -247,5 +248,10 @@ draw_pass_1 = SubResource("QuadMesh_qkj5a")
 light_color = Color(0, 0, 1, 1)
 omni_range = 7.0
 omni_attenuation = 0.417
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_pc6ia")
+volume_db = -2.0
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

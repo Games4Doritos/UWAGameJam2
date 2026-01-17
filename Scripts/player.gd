@@ -9,6 +9,7 @@ const SENSITIVITY = 0.005
 @onready var pitch = $Yaw/Pitch
 @onready var gun_anim = $Yaw/Pitch/Camera3D/shotgun/AnimationPlayer
 @onready var raycast = $Yaw/Pitch/Camera3D/shotgun/RayCast3D
+@onready var gun = $Yaw/Pitch/Camera3D/shotgun
 
 var bullet = preload("res://Scenes/bullet.tscn")
 var bulletInstance
@@ -78,6 +79,8 @@ func _physics_process(delta: float) -> void:
 			bulletInstance.transform.basis = raycast.global_transform.basis
 			get_parent().add_child(bulletInstance)
 			gun_anim.play("shoot")
+			gun.get_node("AudioStreamPlayer3D").play()
+			
 			pitch.rotation.x = clamp(pitch.rotation.x + PI/8, -PI/2, PI/2)
 
 	move_and_slide()

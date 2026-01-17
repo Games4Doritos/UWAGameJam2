@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv4ke34goy3tr"]
+[gd_scene load_steps=11 format=3 uid="uid://dv4ke34goy3tr"]
 
 [ext_resource type="PackedScene" uid="uid://darwuw5cvtoq7" path="res://Models/Shotgun Sawed Off.glb" id="1_0ym6k"]
+[ext_resource type="AudioStream" uid="uid://ck3sf0k82ubpq" path="res://sounds/shotgun-146188.mp3" id="2_u0ide"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ym6k"]
 albedo_color = Color(0.46666667, 0.46666667, 0.46666667, 1)
@@ -113,3 +114,6 @@ libraries = {
 
 [node name="RayCast3D" type="RayCast3D" parent="." index="2"]
 transform = Transform3D(0.99999976, 0, -1.7763568e-14, 0, 0.99999976, 0, 1.7763568e-14, 0, 0.99999976, 3.1856983, 0.37646636, 0.0004039607)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("2_u0ide")
